@@ -12,11 +12,9 @@
 
 .inner-carousel {
   display: flex;
-  background: lightblue;
 }
 
 .carousel {
   cursor: grab;
   overflow: hidden;
-  background-color: pink;
 }

@@ -3,13 +3,23 @@ import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import images from './images';
 
-function App() {
-  console.log(images);
+function App() { 
+  const [width, setWidth] = useState(0);
+  const carousel = useRef();
+
+  useEffect(() => {
+    // console.log(carousel.current.scrollWidth, carousel.current.offsetWidth);
+    setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+  }, []);
 
   return (
     <div className="App">
-      <motion.div className='carousel'>
-        <motion.div drag="x" className='inner-carousel'>
+      <motion.div ref={carousel} className='carousel' whileTap={{cursor: "grabbing"}}>
+        <motion.div 
+          drag="x" 
+          dragConstraints={{ right: 0, left: -width }} 
+          className='inner-carousel'
+        >
         { images.map(image => {
           return (
             <motion.div className="item" key={image}>
