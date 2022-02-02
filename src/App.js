@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <motion.div className='carousel'>
-        <motion.div className='inner-carousel'>
+        <motion.div drag="x" className='inner-carousel'>
         { images.map(image => {
           return (
             <motion.div className="item" key={image}>
